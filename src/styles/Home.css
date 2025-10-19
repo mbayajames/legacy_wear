@@ -4,3 +4,19 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.animate-slide-up-delay-0 {
+  animation-delay: 0s;
+}
+
+.animate-slide-up-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.animate-slide-up-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.animate-slide-up-delay-3 {
+  animation-delay: 0.3s;
+}
