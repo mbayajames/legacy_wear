@@ -1,0 +1,31 @@
+@keyframes pulse-pink {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+@keyframes slide-up {
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes fade-in-scale {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes logo-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.15); }
+}
+.animate-pulse-pink {
+  animation: pulse-pink 2s infinite ease-in-out;
+}
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out forwards;
+}
+.animate-fade-in-scale {
+  animation: fade-in-scale 1s ease-out forwards;
+}
+.animate-logo-bounce {
+  animation: logo-bounce 2s infinite ease-in-out;
+}
+.logo-image {
+  image-rendering: auto;
+}
