@@ -25,14 +25,39 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen py-16">
+    <div className="min-h-screen bg-black text-white py-16">
+      <style>
+        {`
+          @keyframes pulse-pink {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+          }
+          @keyframes slide-up {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+          @keyframes fade-in-scale {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .animate-pulse-pink {
+            animation: pulse-pink 2s infinite ease-in-out;
+          }
+          .animate-slide-up {
+            animation: slide-up 0.8s ease-out forwards;
+          }
+          .animate-fade-in-scale {
+            animation: fade-in-scale 1s ease-out forwards;
+          }
+        `}
+      </style>
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-5xl font-bold mb-4">
-            Get in <span className="text-primary">Touch</span>
+        <div className="text-center mb-16 animate-fade-in-scale">
+          <h1 className="text-5xl font-extrabold mb-4">
+            Get in <span className="text-pink-500">Touch</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Have a question or feedback? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
         </div>
@@ -40,40 +65,40 @@ const Contact = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Info */}
           <div className="space-y-6">
-            <div className="bg-card border border-border rounded-lg p-6 animate-slide-up">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Mail className="h-6 w-6 text-primary" />
+            <div className="bg-gray-900 border border-pink-500/30 rounded-lg p-6 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-slide-up">
+              <div className="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4 animate-pulse-pink">
+                <Mail className="h-6 w-6 text-pink-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Email Us</h3>
-              <p className="text-muted-foreground">info@legacywear.com</p>
-              <p className="text-muted-foreground">support@legacywear.com</p>
+              <h3 className="text-xl font-semibold mb-2 text-white">Email Us</h3>
+              <p className="text-gray-300">info@legacywear.com</p>
+              <p className="text-gray-300">support@legacywear.com</p>
             </div>
 
-            <div className="bg-card border border-border rounded-lg p-6 animate-slide-up">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Phone className="h-6 w-6 text-primary" />
+            <div className="bg-gray-900 border border-pink-500/30 rounded-lg p-6 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-slide-up">
+              <div className="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4 animate-pulse-pink">
+                <Phone className="h-6 w-6 text-pink-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Call Us</h3>
-              <p className="text-muted-foreground">+254 700 000 000</p>
-              <p className="text-sm text-muted-foreground mt-2">Mon-Fri: 9AM - 6PM</p>
+              <h3 className="text-xl font-semibold mb-2 text-white">Call Us</h3>
+              <p className="text-gray-300">+254 700 000 000</p>
+              <p className="text-sm text-gray-300 mt-2">Mon-Fri: 9AM - 6PM</p>
             </div>
 
-            <div className="bg-card border border-border rounded-lg p-6 animate-slide-up">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <MapPin className="h-6 w-6 text-primary" />
+            <div className="bg-gray-900 border border-pink-500/30 rounded-lg p-6 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-slide-up">
+              <div className="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4 animate-pulse-pink">
+                <MapPin className="h-6 w-6 text-pink-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Visit Us</h3>
-              <p className="text-muted-foreground">123 Fashion Street</p>
-              <p className="text-muted-foreground">Nairobi, Kenya</p>
+              <h3 className="text-xl font-semibold mb-2 text-white">Visit Us</h3>
+              <p className="text-gray-300">123 Fashion Street</p>
+              <p className="text-gray-300">Nairobi, Kenya</p>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="bg-card border border-border rounded-lg p-8 animate-fade-in">
+            <form onSubmit={handleSubmit} className="bg-gray-900 border border-pink-500/30 rounded-lg p-8 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-fade-in-scale">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
                     Your Name
                   </label>
                   <input
@@ -83,12 +108,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
                     Email Address
                   </label>
                   <input
@@ -98,13 +123,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium mb-2 text-gray-300">
                   Subject
                 </label>
                 <input
@@ -114,12 +139,12 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                 />
               </div>
 
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
                   Message
                 </label>
                 <textarea
@@ -129,11 +154,11 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                  className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors resize-none"
                 />
               </div>
 
-              <Button type="submit" variant="hero" size="lg" className="w-full">
+              <Button type="submit" className="w-full bg-pink-500 text-black hover:bg-pink-600 rounded-md font-semibold transition-colors animate-pulse-pink">
                 <Send className="mr-2 h-5 w-5" />
                 Send Message
               </Button>
@@ -142,8 +167,8 @@ const Contact = () => {
         </div>
 
         {/* Map Placeholder */}
-        <div className="mt-16 h-96 bg-secondary/30 rounded-lg flex items-center justify-center animate-fade-in">
-          <p className="text-muted-foreground">Map Integration Placeholder</p>
+        <div className="mt-16 h-96 bg-gradient-to-br from-pink-500/20 to-black rounded-lg flex items-center justify-center animate-fade-in-scale">
+          <p className="text-gray-300">Map Integration Placeholder</p>
         </div>
       </div>
     </div>
