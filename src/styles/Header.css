@@ -1,0 +1,42 @@
+@keyframes pulse-pink {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes slide-up {
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes fade-in-scale {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(236, 72, 153, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(236, 72, 153, 0.9); }
+}
+@keyframes logo-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.15); }
+}
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 5px rgba(236, 72, 153, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(236, 72, 153, 1); }
+}
+.animate-pulse-pink {
+  animation: pulse-pink 2s infinite ease-in-out;
+}
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out forwards;
+}
+.animate-fade-in-scale {
+  animation: fade-in-scale 1s ease-out forwards;
+}
+.animate-glow {
+  animation: glow 1.5s infinite ease-in-out;
+}
+.animate-logo-bounce {
+  animation: logo-bounce 2s infinite ease-in-out;
+}
+.animate-text-glow {
+  animation: text-glow 2s infinite ease-in-out;
+}
