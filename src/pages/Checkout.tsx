@@ -80,17 +80,42 @@ const Checkout = () => {
   }
 
   return (
-    <div className="min-h-screen py-16">
+    <div className="min-h-screen bg-black text-white py-16">
+      <style>
+        {`
+          @keyframes pulse-pink {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+          }
+          @keyframes slide-up {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+          @keyframes fade-in-scale {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .animate-pulse-pink {
+            animation: pulse-pink 2s infinite ease-in-out;
+          }
+          .animate-slide-up {
+            animation: slide-up 0.8s ease-out forwards;
+          }
+          .animate-fade-in-scale {
+            animation: fade-in-scale 1s ease-out forwards;
+          }
+        `}
+      </style>
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-8 animate-fade-in">Checkout</h1>
+        <h1 className="text-4xl font-extrabold mb-8 text-pink-500 animate-fade-in-scale">Checkout</h1>
 
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Billing Information */}
-          <div className="bg-card border border-border rounded-lg p-6 animate-slide-up">
-            <h2 className="text-2xl font-semibold mb-6">Billing Information</h2>
+          <div className="bg-gray-900 border border-pink-500/30 rounded-lg p-6 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-slide-up">
+            <h2 className="text-2xl font-bold mb-6 text-pink-500">Billing Information</h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium mb-2">First Name</label>
+                <label htmlFor="firstName" className="block text-sm font-medium mb-2 text-gray-300">First Name</label>
                 <input
                   id="firstName"
                   type="text"
@@ -98,11 +123,11 @@ const Checkout = () => {
                   required
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium mb-2">Last Name</label>
+                <label htmlFor="lastName" className="block text-sm font-medium mb-2 text-gray-300">Last Name</label>
                 <input
                   id="lastName"
                   type="text"
@@ -110,11 +135,11 @@ const Checkout = () => {
                   required
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                 />
               </div>
               <div className="md:col-span-2">
-                <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">Email</label>
                 <input
                   id="email"
                   type="email"
@@ -122,11 +147,11 @@ const Checkout = () => {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                 />
               </div>
               <div className="md:col-span-2">
-                <label htmlFor="phone" className="block text-sm font-medium mb-2">Phone Number</label>
+                <label htmlFor="phone" className="block text-sm font-medium mb-2 text-gray-300">Phone Number</label>
                 <input
                   id="phone"
                   type="tel"
@@ -134,18 +159,18 @@ const Checkout = () => {
                   required
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                 />
               </div>
             </div>
           </div>
 
           {/* Shipping Address */}
-          <div className="bg-card border border-border rounded-lg p-6 animate-slide-up">
-            <h2 className="text-2xl font-semibold mb-6">Shipping Address</h2>
+          <div className="bg-gray-900 border border-pink-500/30 rounded-lg p-6 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-slide-up">
+            <h2 className="text-2xl font-bold mb-6 text-pink-500">Shipping Address</h2>
             <div className="space-y-4">
               <div>
-                <label htmlFor="address" className="block text-sm font-medium mb-2">Address</label>
+                <label htmlFor="address" className="block text-sm font-medium mb-2 text-gray-300">Address</label>
                 <input
                   id="address"
                   type="text"
@@ -153,12 +178,12 @@ const Checkout = () => {
                   required
                   value={formData.address}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                 />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="city" className="block text-sm font-medium mb-2">City</label>
+                  <label htmlFor="city" className="block text-sm font-medium mb-2 text-gray-300">City</label>
                   <input
                     id="city"
                     type="text"
@@ -166,11 +191,11 @@ const Checkout = () => {
                     required
                     value={formData.city}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                   />
                 </div>
                 <div>
-                  <label htmlFor="postalCode" className="block text-sm font-medium mb-2">Postal Code</label>
+                  <label htmlFor="postalCode" className="block text-sm font-medium mb-2 text-gray-300">Postal Code</label>
                   <input
                     id="postalCode"
                     type="text"
@@ -178,7 +203,7 @@ const Checkout = () => {
                     required
                     value={formData.postalCode}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                   />
                 </div>
               </div>
@@ -186,69 +211,69 @@ const Checkout = () => {
           </div>
 
           {/* Payment Method */}
-          <div className="bg-card border border-border rounded-lg p-6 animate-slide-up">
-            <h2 className="text-2xl font-semibold mb-6">Payment Method</h2>
+          <div className="bg-gray-900 border border-pink-500/30 rounded-lg p-6 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-slide-up">
+            <h2 className="text-2xl font-bold mb-6 text-pink-500">Payment Method</h2>
             
             <div className="grid gap-4 mb-6">
               <label className={`flex items-center gap-4 p-4 border-2 rounded-lg transition-all cursor-pointer ${
-                paymentMethod === 'mpesa' ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/50'
-              }`}>
+                paymentMethod === 'mpesa' ? 'border-pink-500 bg-pink-500/10' : 'border-pink-500/30 hover:border-pink-500/50'
+              } animate-pulse-pink`}>
                 <input
                   type="radio"
                   name="paymentMethod"
                   value="mpesa"
                   checked={paymentMethod === 'mpesa'}
                   onChange={() => setPaymentMethod('mpesa')}
-                  className="h-5 w-5 text-primary focus:ring-primary"
+                  className="h-5 w-5 text-pink-500 focus:ring-pink-500"
                 />
-                <Smartphone className="h-6 w-6 text-primary" />
+                <Smartphone className="h-6 w-6 text-pink-500" />
                 <div className="text-left">
-                  <div className="font-semibold">M-Pesa</div>
-                  <div className="text-sm text-muted-foreground">Pay with M-Pesa mobile money</div>
+                  <div className="font-semibold text-white">M-Pesa</div>
+                  <div className="text-sm text-gray-300">Pay with M-Pesa mobile money</div>
                 </div>
               </label>
 
               <label className={`flex items-center gap-4 p-4 border-2 rounded-lg transition-all cursor-pointer ${
-                paymentMethod === 'card' ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/50'
-              }`}>
+                paymentMethod === 'card' ? 'border-pink-500 bg-pink-500/10' : 'border-pink-500/30 hover:border-pink-500/50'
+              } animate-pulse-pink`}>
                 <input
                   type="radio"
                   name="paymentMethod"
                   value="card"
                   checked={paymentMethod === 'card'}
                   onChange={() => setPaymentMethod('card')}
-                  className="h-5 w-5 text-primary focus:ring-primary"
+                  className="h-5 w-5 text-pink-500 focus:ring-pink-500"
                 />
-                <CreditCard className="h-6 w-6 text-primary" />
+                <CreditCard className="h-6 w-6 text-pink-500" />
                 <div className="text-left">
-                  <div className="font-semibold">Credit/Debit Card</div>
-                  <div className="text-sm text-muted-foreground">Visa, Mastercard accepted</div>
+                  <div className="font-semibold text-white">Credit/Debit Card</div>
+                  <div className="text-sm text-gray-300">Visa, Mastercard accepted</div>
                 </div>
               </label>
 
               <label className={`flex items-center gap-4 p-4 border-2 rounded-lg transition-all cursor-pointer ${
-                paymentMethod === 'bank' ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/50'
-              }`}>
+                paymentMethod === 'bank' ? 'border-pink-500 bg-pink-500/10' : 'border-pink-500/30 hover:border-pink-500/50'
+              } animate-pulse-pink`}>
                 <input
                   type="radio"
                   name="paymentMethod"
                   value="bank"
                   checked={paymentMethod === 'bank'}
                   onChange={() => setPaymentMethod('bank')}
-                  className="h-5 w-5 text-primary focus:ring-primary"
+                  className="h-5 w-5 text-pink-500 focus:ring-pink-500"
                 />
-                <Building className="h-6 w-6 text-primary" />
+                <Building className="h-6 w-6 text-pink-500" />
                 <div className="text-left">
-                  <div className="font-semibold">Bank Transfer</div>
-                  <div className="text-sm text-muted-foreground">Direct bank payment</div>
+                  <div className="font-semibold text-white">Bank Transfer</div>
+                  <div className="text-sm text-gray-300">Direct bank payment</div>
                 </div>
               </label>
             </div>
 
             {paymentMethod === 'mpesa' && (
-              <div className="space-y-4 p-4 bg-secondary/30 rounded-lg">
+              <div className="space-y-4 p-4 bg-pink-500/10 rounded-lg">
                 <div>
-                  <label htmlFor="mpesaPhone" className="block text-sm font-medium mb-2">M-Pesa Phone Number</label>
+                  <label htmlFor="mpesaPhone" className="block text-sm font-medium mb-2 text-gray-300">M-Pesa Phone Number</label>
                   <input
                     id="mpesaPhone"
                     type="tel"
@@ -256,16 +281,16 @@ const Checkout = () => {
                     required
                     value={formData.mpesaPhone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                   />
                 </div>
               </div>
             )}
 
             {paymentMethod === 'card' && (
-              <div className="space-y-4 p-4 bg-secondary/30 rounded-lg">
+              <div className="space-y-4 p-4 bg-pink-500/10 rounded-lg">
                 <div>
-                  <label htmlFor="cardNumber" className="block text-sm font-medium mb-2">Card Number</label>
+                  <label htmlFor="cardNumber" className="block text-sm font-medium mb-2 text-gray-300">Card Number</label>
                   <input
                     id="cardNumber"
                     type="text"
@@ -273,12 +298,12 @@ const Checkout = () => {
                     required
                     value={formData.cardNumber}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="expiry" className="block text-sm font-medium mb-2">Expiry Date</label>
+                    <label htmlFor="expiry" className="block text-sm font-medium mb-2 text-gray-300">Expiry Date</label>
                     <input
                       id="expiry"
                       type="text"
@@ -286,11 +311,11 @@ const Checkout = () => {
                       required
                       value={formData.expiry}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                     />
                   </div>
                   <div>
-                    <label htmlFor="cvv" className="block text-sm font-medium mb-2">CVV</label>
+                    <label htmlFor="cvv" className="block text-sm font-medium mb-2 text-gray-300">CVV</label>
                     <input
                       id="cvv"
                       type="password"
@@ -298,7 +323,7 @@ const Checkout = () => {
                       required
                       value={formData.cvv}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
                     />
                   </div>
                 </div>
@@ -307,21 +332,21 @@ const Checkout = () => {
           </div>
 
           {/* Order Summary */}
-          <div className="bg-card border border-border rounded-lg p-6 animate-slide-up">
-            <h2 className="text-2xl font-semibold mb-6">Order Summary</h2>
+          <div className="bg-gray-900 border border-pink-500/30 rounded-lg p-6 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-slide-up">
+            <h2 className="text-2xl font-bold mb-6 text-pink-500">Order Summary</h2>
             <div className="space-y-4">
               {cart.map((item) => (
                 <div key={item.id} className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">
+                  <span className="text-gray-300">
                     {item.name} x {item.quantity} {item.sizes ? `(Size: ${item.sizes[0]})` : ''}
                   </span>
-                  <span className="font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
+                  <span className="font-semibold text-white">${(item.price * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
-              <div className="border-t border-border pt-4">
+              <div className="border-t border-pink-500/30 pt-4">
                 <div className="flex justify-between text-xl font-bold">
-                  <span>Total</span>
-                  <span className="text-primary">${getTotalPrice().toFixed(2)}</span>
+                  <span className="text-white">Total</span>
+                  <span className="text-pink-500">${getTotalPrice().toFixed(2)}</span>
                 </div>
               </div>
             </div>
@@ -329,11 +354,11 @@ const Checkout = () => {
 
           {/* Actions */}
           <div className="flex gap-4">
-            <Button type="submit" variant="hero" size="lg" className="flex-1">
+            <Button type="submit" className="flex-1 bg-pink-500 text-black hover:bg-pink-600 rounded-md font-semibold transition-colors animate-pulse-pink">
               Complete Order
             </Button>
             <Link to="/cart">
-              <Button variant="outline" size="lg" className="flex-1">
+              <Button className="flex-1 border border-pink-500 text-pink-500 hover:bg-pink-500/20 hover:text-pink-500 rounded-md font-semibold transition-colors">
                 Back to Cart
               </Button>
             </Link>
