@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { products } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
+import '../styles/CategoryPage.css';
 
 interface CategoryPageProps {
   category: 'shoes' | 'clothes' | 'bags' | 'accessories';
@@ -46,18 +47,18 @@ const CategoryPage = ({ category, title, description }: CategoryPageProps) => {
   const paginatedProducts = sortedProducts.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
   return (
-    <div className="min-h-screen py-16">
+    <div className="min-h-screen bg-black text-white py-16">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="mb-12 animate-fade-in">
-          <h1 className="text-5xl font-bold mb-4">{title}</h1>
-          <p className="text-xl text-muted-foreground">{description}</p>
+        <div className="mb-12 animate-fade-in-scale">
+          <h1 className="text-5xl font-extrabold mb-4 text-pink-500">{title}</h1>
+          <p className="text-xl text-gray-300">{description}</p>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap gap-4 mb-8 p-6 bg-card rounded-lg border border-border animate-slide-up">
+        <div className="flex flex-wrap gap-4 mb-8 p-6 bg-gray-900 border border-pink-500/30 rounded-lg hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-slide-up">
           <div className="flex-1 min-w-[200px]">
-            <label htmlFor="sort-select" className="block text-sm font-medium mb-2">
+            <label htmlFor="sort-select" className="block text-sm font-medium mb-2 text-gray-300">
               Sort By
             </label>
             <select
@@ -65,7 +66,7 @@ const CategoryPage = ({ category, title, description }: CategoryPageProps) => {
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as 'default' | 'price-low' | 'price-high' | 'rating')}
               aria-label="Sort products by"
-              className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
             >
               <option value="default">Default</option>
               <option value="price-low">Price: Low to High</option>
@@ -75,7 +76,7 @@ const CategoryPage = ({ category, title, description }: CategoryPageProps) => {
           </div>
 
           <div className="flex-1 min-w-[200px]">
-            <label htmlFor="price-select" className="block text-sm font-medium mb-2">
+            <label htmlFor="price-select" className="block text-sm font-medium mb-2 text-gray-300">
               Price Range
             </label>
             <select
@@ -83,7 +84,7 @@ const CategoryPage = ({ category, title, description }: CategoryPageProps) => {
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value as 'all' | 'under-50' | '50-150' | 'over-150')}
               aria-label="Filter by price range"
-              className="w-full px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-2 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
             >
               <option value="all">All Prices</option>
               <option value="under-50">Under $50</option>
@@ -97,8 +98,13 @@ const CategoryPage = ({ category, title, description }: CategoryPageProps) => {
         {sortedProducts.length > 0 ? (
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {paginatedProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {paginatedProducts.map((product, index) => (
+                <div
+                  key={product.id}
+                  className={`animate-slide-up delay-${Math.min(index, 11)}`}
+                >
+                  <ProductCard product={product} />
+                </div>
               ))}
             </div>
             {/* Pagination */}
@@ -106,29 +112,29 @@ const CategoryPage = ({ category, title, description }: CategoryPageProps) => {
               <button
                 onClick={() => setPage((p) => Math.max(p - 1, 1))}
                 disabled={page === 1}
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-md disabled:opacity-50"
+                className="px-4 py-2 bg-pink-500 text-black rounded-md hover:bg-pink-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors animate-pulse-pink"
               >
                 Previous
               </button>
               <button
                 onClick={() => setPage((p) => p + 1)}
                 disabled={page * itemsPerPage >= sortedProducts.length}
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-md disabled:opacity-50"
+                className="px-4 py-2 bg-pink-500 text-black rounded-md hover:bg-pink-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors animate-pulse-pink"
               >
                 Next
               </button>
             </div>
           </div>
         ) : (
-          <div className="text-center py-20">
-            <p className="text-2xl text-muted-foreground">No products found matching your filters</p>
+          <div className="text-center py-20 animate-fade-in-scale">
+            <p className="text-2xl text-gray-300">No products found matching your filters</p>
             <button
               onClick={() => {
                 setSortBy('default');
                 setPriceRange('all');
                 setPage(1);
               }}
-              className="mt-4 text-primary underline"
+              className="mt-4 text-pink-500 hover:text-pink-600 underline transition-colors"
             >
               Clear Filters
             </button>
