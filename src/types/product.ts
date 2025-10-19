@@ -1,17 +1,21 @@
+// src/types/product.ts
+
 export interface Product {
   id: string;
   name: string;
   price: number;
+  category: 'shoes' | 'clothes' | 'bags' | 'accessories';
   image: string;
-  description?: string;
+  description: string;
+  sizes?: string[];
+  colors?: string[];
+  inStock: boolean;
   rating?: number;
   reviews?: number;
-  inStock: boolean;
-  colors?: string[];
-  sizes?: string[];
-  category: 'shoes' | 'clothes' | 'bags' | 'accessories';
 }
 
 export interface CartItem extends Product {
   quantity: number;
+  selectedSize?: string;
+  selectedColor?: string;
 }
