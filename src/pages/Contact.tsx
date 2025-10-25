@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { toast } from 'sonner';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import '../styles/Contact.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,33 +27,11 @@ const Contact = () => {
     }));
   };
 
+  // Coordinates for Nairobi, Kenya
+  const nairobiPosition = { lat: -1.2921, lng: 36.8219 };
+
   return (
     <div className="min-h-screen bg-black text-white py-16">
-      <style>
-        {`
-          @keyframes pulse-pink {
-            0%, 100% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.1); opacity: 1; }
-          }
-          @keyframes slide-up {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-          }
-          @keyframes fade-in-scale {
-            0% { transform: scale(0.95); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-          }
-          .animate-pulse-pink {
-            animation: pulse-pink 2s infinite ease-in-out;
-          }
-          .animate-slide-up {
-            animation: slide-up 0.8s ease-out forwards;
-          }
-          .animate-fade-in-scale {
-            animation: fade-in-scale 1s ease-out forwards;
-          }
-        `}
-      </style>
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-scale">
@@ -70,8 +51,8 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-pink-500" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">Email Us</h3>
-              <p className="text-gray-300">info@legacywear.com</p>
-              <p className="text-gray-300">support@legacywear.com</p>
+              <p className="text-gray-300">tamarairungu@gmail.com</p>
+              <p className="text-gray-300">tamarairungu@gmail.com</p>
             </div>
 
             <div className="bg-gray-900 border border-pink-500/30 rounded-lg p-6 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] transition-all animate-slide-up">
@@ -79,7 +60,7 @@ const Contact = () => {
                 <Phone className="h-6 w-6 text-pink-500" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-white">Call Us</h3>
-              <p className="text-gray-300">+254 700 000 000</p>
+              <p className="text-gray-300">+254 780 983 590</p>
               <p className="text-sm text-gray-300 mt-2">Mon-Fri: 9AM - 6PM</p>
             </div>
 
@@ -166,9 +147,25 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Map Placeholder */}
-        <div className="mt-16 h-96 bg-gradient-to-br from-pink-500/20 to-black rounded-lg flex items-center justify-center animate-fade-in-scale">
-          <p className="text-gray-300">Map Integration Placeholder</p>
+        {/* Map */}
+        <div className="mt-16 h-96 rounded-lg animate-fade-in-scale overflow-hidden">
+          <MapContainer
+            center={[nairobiPosition.lat, nairobiPosition.lng]}
+            zoom={15}
+            style={{ height: '100%', width: '100%' }}
+            className="map-container"
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker position={[nairobiPosition.lat, nairobiPosition.lng]}>
+              <Popup>
+                123 Fashion Street<br />
+                Nairobi, Kenya
+              </Popup>
+            </Marker>
+          </MapContainer>
         </div>
       </div>
     </div>
