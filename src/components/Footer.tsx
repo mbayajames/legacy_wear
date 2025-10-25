@@ -1,11 +1,34 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, CreditCard, Truck, ShieldCheck } from 'lucide-react';
+import { Facebook, Instagram, PlayCircle, Mail, Phone, MapPin, CreditCard, Truck, ShieldCheck } from 'lucide-react';
 import Logo from '@/assets/PHOTO-2025-10-18-12-29-30.jpg';
 import '../styles/Footer.css';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 border-t border-pink-500/30 mt-20">
+      <style>
+        {`
+          @keyframes pulse-pink {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+          }
+          @keyframes slide-up {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+          @keyframes fade-in-scale {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .animate-pulse-pink { animation: pulse-pink 2s infinite ease-in-out; }
+          .animate-slide-up { animation: slide-up 0.6s ease-out forwards; }
+          .animate-slide-up-delay-1 { animation: slide-up 0.6s ease-out 0.1s forwards; opacity: 0; }
+          .animate-slide-up-delay-2 { animation: slide-up 0.6s ease-out 0.2s forwards; opacity: 0; }
+          .animate-slide-up-delay-3 { animation: slide-up 0.6s ease-out 0.3s forwards; opacity: 0; }
+          .animate-fade-in-scale { animation: fade-in-scale 0.8s ease-out forwards; }
+        `}
+      </style>
+
       <div className="container mx-auto px-4 py-12">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
@@ -26,14 +49,32 @@ const Footer = () => {
               Your destination for premium fashion and accessories. Style, quality, and confidence.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-pink-500 transition-colors animate-pulse-pink" aria-label="Visit our Facebook page">
+              <a
+                href="#"
+                className="text-gray-300 hover:text-pink-500 transition-colors animate-pulse-pink"
+                aria-label="Visit our Facebook page"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-pink-500 transition-colors animate-pulse-pink" aria-label="Visit our Instagram page">
+              <a
+                href="https://www.instagram.com/legacyy_wear?igsh=MTVrNGtsMnBvbDdyYg=="
+                className="text-gray-300 hover:text-pink-500 transition-colors animate-pulse-pink"
+                aria-label="Visit our Instagram page"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-pink-500 transition-colors animate-pulse-pink" aria-label="Visit our Twitter page">
-                <Twitter className="h-5 w-5" />
+              <a
+                href="https://www.tiktok.com/@legacyy_wear?_t=ZM-90qVHgs9tZU&_r=1" 
+                className="text-gray-300 hover:text-pink-500 transition-colors animate-pulse-pink"
+                aria-label="Visit our TikTok page"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PlayCircle className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -70,11 +111,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-2 text-gray-300">
                 <Phone className="h-5 w-5 text-pink-500 flex-shrink-0 animate-pulse-pink" />
-                <span>+254 700 000 000</span>
+                <span>+254 780 983 590</span>
               </li>
               <li className="flex items-center space-x-2 text-gray-300">
                 <Mail className="h-5 w-5 text-pink-500 flex-shrink-0 animate-pulse-pink" />
-                <span>info@legacywear.com</span>
+                <span>tamarairungu@gmail.com</span>
               </li>
             </ul>
           </div>
