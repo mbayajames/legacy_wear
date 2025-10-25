@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, CreditCard, Truck, ShieldCheck } from 'lucide-react';
+import Logo from '@/assets/PHOTO-2025-10-18-12-29-30.jpg';
 import '../styles/Footer.css';
 
 const Footer = () => {
@@ -10,10 +11,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="animate-slide-up">
-            <h3 className="text-2xl font-extrabold mb-4">
-              <span className="text-white">LEGACY</span>
-              <span className="text-pink-500"> WEAR</span>
-            </h3>
+            <div className="flex items-center space-x-4 mb-4">
+              <img
+                src={Logo}
+                alt="Legacy Wear Logo"
+                className="h-20 w-auto brightness-150"
+              />
+              <h3 className="text-xl font-extrabold">
+                <span className="text-white">LEGACY</span>
+                <span className="text-pink-500"> WEAR</span>
+              </h3>
+            </div>
             <p className="text-gray-300 mb-4">
               Your destination for premium fashion and accessories. Style, quality, and confidence.
             </p>
@@ -108,7 +116,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 space-y-4 md:space-y-0 animate-fade-in-scale">
           <p className="text-sm text-gray-300">
-            © 2024 Legacy Wear. All rights reserved.
+            Copyright 2024 Legacy Wear. All rights reserved.
           </p>
           
           <div className="flex space-x-4">
