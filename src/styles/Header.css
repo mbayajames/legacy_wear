@@ -40,3 +40,6 @@
 .animate-text-glow {
   animation: text-glow 2s infinite ease-in-out;
 }
+.nav-margin {
+  margin-left: 80px;
+}
