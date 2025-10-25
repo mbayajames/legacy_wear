@@ -125,10 +125,10 @@ const Home = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { name: 'Shoes', path: '/shoes', emoji: '👟' },
-            { name: 'Clothes', path: '/clothes', emoji: '👗' },
-            { name: 'Bags', path: '/bags', emoji: '👜' },
-            { name: 'Accessories', path: '/accessories', emoji: '💍' },
+            { name: 'Shoes', path: '/shoes', emoji: '' },
+            { name: 'Clothes', path: '/clothes', emoji: '' },
+            { name: 'Bags', path: '/bags', emoji: '' },
+            { name: 'Accessories', path: '/accessories', emoji: '' },
           ].map((category, index) => (
             <Link key={category.name} to={category.path} className="group">
               <div
@@ -202,7 +202,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - FIXED: NO ERRORS, REAL EMAILS */}
       <section className="py-20 bg-gradient-to-r from-pink-500/20 to-black">
         <div className="container mx-auto px-4 text-center animate-fade-in-scale">
           <h2 className="text-4xl font-extrabold mb-4 text-pink-500">Join the Legacy</h2>
@@ -210,16 +210,53 @@ const Home = () => {
             Subscribe to our newsletter for exclusive offers, style tips, and
             early access to new collections.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.currentTarget;
+              const email = form.email.value.trim();
+              if (!email) return;
+
+              const formData = new FormData();
+              formData.append('email', email);
+
+              try {
+                const response = await fetch('https://formspree.io/f/xabc1234', {
+                  method: 'POST',
+                  body: formData,
+                  headers: {
+                    'Accept': 'application/json'
+                  }
+                });
+
+                if (response.ok) {
+                  alert('Thank you for subscribing!');
+                  form.reset();
+                } else {
+                  const error = await response.json().catch(() => ({}));
+                  alert(error.error || 'Oops! Please try again later.');
+                }
+              } catch {
+                alert('Network error. Please check your connection.');
+              }
+            }}
+            className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
+          >
             <input
+              name="email"
               type="email"
               placeholder="Enter your email"
+              required
               className="flex-1 px-4 py-3 bg-gray-800 border border-pink-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 text-white hover:bg-pink-500/10 transition-colors"
             />
-            <Button className="bg-pink-500 text-black hover:bg-pink-600 rounded-md font-semibold transition-colors animate-pulse-pink">
+            <Button
+              type="submit"
+              className="bg-pink-500 text-black hover:bg-pink-600 rounded-md font-semibold transition-colors animate-pulse-pink"
+            >
               Subscribe
             </Button>
-          </div>
+          </form>
         </div>
       </section>
     </div>
